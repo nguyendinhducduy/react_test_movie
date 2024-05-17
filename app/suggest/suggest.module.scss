@@ -1,0 +1,76 @@
+.none {
+    margin-top: 96px;
+    text-align: center;
+
+    h3 {
+        font-size: 4.8rem;
+        font-weight: 600;
+        color: rgba(235, 238, 245, 1);
+    }
+
+    p {
+        margin-top: 16px;
+        font-size: 2rem;
+        color: rgba(118, 126, 148, 1);
+    }
+
+}
+
+.search {
+    margin: 24px 0 80px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    &__inner {
+        border: 1px solid #253148;
+        background: url(/search.svg) no-repeat center left 15px;
+        border-radius: 10px;
+        margin-right: 8px;
+    }
+
+    &__placeholder {
+        padding: 0 16px 0 56px;
+        font-size: 1.4rem;
+        color: rgba(71, 80, 105, 1);
+        margin-top: 10px;
+        cursor: default;
+    }
+
+    input {
+        font-size: 1.6rem;
+        border: none;
+        width: 344px;
+        background: none;
+        color: rgba(118, 126, 148, 1);
+        padding: 0 16px 0 56px;
+        margin: 0 0 9px;
+
+        &:only-child {
+            height: 62px;
+            margin: 0;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &::placeholder {
+            color: rgba(71, 80, 105, 1);
+            opacity: 1;
+        }
+
+        &::-ms-input-placeholder {
+            color: rgba(71, 80, 105, 1);
+        }
+    }
+
+    button {
+        width: 121px;
+        color: rgba(255, 255, 255, 1);
+        background: rgba(123, 110, 246, 1);
+        font-size: 1.6rem;
+        border-radius: 12px;
+
+    }
+}

@@ -1,0 +1,32 @@
+.tab {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 88px;
+
+    ul {
+        background: rgba(0, 0, 0, 0.2);
+        padding: 8px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        border-radius: 12px;
+    }
+
+    li {
+        padding: 0 32px;
+        line-height: 40px;
+        border-radius: 8px;
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: rgba(142, 149, 169, 1);
+        background: none;
+        cursor: pointer;
+
+        &.current {
+            background: rgba(123, 110, 246, 1);
+            color: #ffffff;
+
+        }
+    }
+}

@@ -1,0 +1,271 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+$breakpoints: (
+    'smless': (max-width: 640px,
+    ),
+    'smover': (min-width: 641px,
+    ),
+    'mdless': (max-width: 767px,
+    ),
+    'mdover': (min-width: 768px,
+    ),
+    'lgless': (max-width: 1024px,
+    ),
+    'lgover': (min-width: 1025px,
+    ),
+    'xlless': (max-width: 1280px,
+    ),
+    'xlover': (min-width: 1281px,
+    ),
+    'xxlless': (max-width: 1440px,
+    ),
+    'xxlover': (min-width: 1441px,
+    ),
+    'maxless': (max-width: 1920px,
+    ),
+    'maxover': (min-width: 1921px,
+    ),
+    ) !default;
+
+@mixin mq($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media screen and #{inspect(map-get($breakpoints, $breakpoint))} {
+            @content;
+        }
+    }
+
+    @else {
+        @error "指定されたブレイクポイントはありません -> #{map-keys($breakpoints)}";
+    }
+}
+
+@mixin mincyo() {
+    font-family: "游明朝",
+        YuMincho,
+        "ヒラギノ明朝 ProN W3",
+        "Hiragino Mincho ProN",
+        "HG明朝E",
+        "ＭＳ Ｐ明朝",
+        "ＭＳ 明朝",
+        serif;
+}
+
+@mixin hover {
+    @include mq(mdover) {
+        &:hover {
+            @content;
+        }
+    }
+}
+
+@mixin pc {
+    @include mq(mdover) {
+        @content;
+    }
+}
+
+@mixin pad {
+    @include max-w(1024px) {
+        @content;
+    }
+}
+
+@mixin sp {
+    @include mq(mdless) {
+        @content;
+    }
+}
+
+@mixin min-w($breakpoint) {
+    @media screen and (min-width: #{$breakpoint}) {
+        @content;
+    }
+}
+
+@mixin max-w($breakpoint) {
+    @media screen and (max-width: #{$breakpoint}) {
+        @content;
+    }
+}
+
+@mixin clear {
+    *zoom: 1;
+
+    &:after {
+        display: block;
+        content: "";
+        clear: both;
+    }
+}
+
+@mixin en {
+    .en & {
+        @content;
+    }
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+li {
+    list-style-type: none;
+}
+
+th {
+    font-weight: inherit;
+}
+
+address {
+    font-style: inherit;
+}
+
+fieldset {
+    min-width: 0;
+    padding: 0;
+    border: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+
+    @include hover {
+        opacity: 0.8;
+        filter: alpha(opacity=80
+        );
+    -ms-filter: "alpha(opacity=80)";
+}
+}
+
+
+img {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    max-width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
+
+button,
+input,
+select,
+textarea {
+    padding: 0;
+    border: 0;
+}
+
+button:not(:disabled):not([aria-disabled='true']) {
+    cursor: pointer;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: url(/background.png) repeat-y center #121a2b;
+    background-size: 100% auto;
+    padding-bottom: 160px;
+    color: #EBEEF5;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+@supports (-webkit-touch-callout: none) {
+    body {
+        height: -webkit-fill-available;
+    }
+}
+
+[v-cloak] {
+    visibility: hidden;
+}
+
+.l-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.pc {
+    @include mq(mdless) {
+        display: none !important;
+    }
+}
+
+.sp {
+    @include mq(mdover) {
+        display: none !important;
+    }
+}
+
+a[href^="tel:"] {
+    @include pc {
+        pointer-events: none;
+    }
+}
+
+.c-title1 {
+    font-size: 6.4rem;
+    font-weight: 600;
+}
+
+main {
+    margin-top: 72px;
+}
+
+.c-text1 {
+    color: #FFFFFF;
+    font-size: 1.6rem;
+    line-height: 24px;
+
+    span {
+        color: #9c92f8;
+    }
+}
+
+.length {
+    margin-top: 48px;
+    font-size: 1.6rem;
+    color: #767E94;
+
+    span {
+        font-weight: bold;
+        font-size: 2rem;
+        text-transform: capitalize;
+    }
+}
+
+.brc {
+    color: rgba(190, 183, 251, 1);
+    font-size: 1.2rem;
+}
+
+.loading {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    li {
+        margin-bottom: 32px;
+    }
+}

@@ -1,0 +1,29 @@
+.header {
+    &__container {
+        height: 80px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+        max-width: 1200px;
+    }
+
+    &__menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin-right: 32px;
+
+        li {
+            margin-right: 62px;
+
+
+            &:last-child {
+                background: url(/arrow-right.svg) no-repeat center right;
+                padding-right: 24px;
+                margin-right: 0;
+            }
+        }
+    }
+}
