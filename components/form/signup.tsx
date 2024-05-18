@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import style from './styles.module.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import hashedPasswords from '../../utils/hashedPassword';
 import { useForm, SubmitHandler } from "react-hook-form"
 import { userType } from '../../utils/interface';
 import { useRouter } from 'next/navigation';
+import { useAuthentication } from '@/providers/AuthenticationProvider'
 
 const SignUp = () => {
 
@@ -48,6 +49,19 @@ const SignUp = () => {
             router.push('/signin');
         }
     }
+
+    const { isAuthenticate } = useAuthentication();
+
+    useEffect(() => {
+        if (isAuthenticate) {
+            router.push('/');
+        }
+    }, [isAuthenticate, router]);
+
+    if (isAuthenticate) {
+        return null;
+    }
+
 
     return (
         <div className={style.form}>

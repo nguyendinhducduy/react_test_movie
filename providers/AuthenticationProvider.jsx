@@ -7,6 +7,7 @@ const AuthenticationContext = createContext({
     username: null,
     isAuthenticate: false,
     saveUsername: (name) => { },
+    logoutContext: () => { },
 });
 
 export const useAuthentication = () => {
@@ -20,6 +21,9 @@ export const AuthenticationProvider = ({ children }) => {
         setUsername(name.username);
         setIsAuthenticate(true);
     }
-
-    return <AuthenticationContext.Provider value={{ username, saveUsername, isAuthenticate }}>{children}</AuthenticationContext.Provider>
+    const logoutContext = () => {
+        setUsername("");
+        setIsAuthenticate(false);
+    }
+    return <AuthenticationContext.Provider value={{ username, saveUsername, isAuthenticate , logoutContext }}>{children}</AuthenticationContext.Provider>
 }

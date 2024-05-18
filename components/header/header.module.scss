@@ -18,12 +18,18 @@
         li {
             margin-right: 62px;
 
-
             &:last-child {
                 background: url(/arrow-right.svg) no-repeat center right;
                 padding-right: 24px;
                 margin-right: 0;
             }
+        }
+        button{
+            background: none;
+            color: #ffffff;
+            font-size: 1.6rem;
+            font-family: "Poppins", sans-serif;
+            background: url(/logout.svg) no-repeat center right; padding-right: 30px;
         }
     }
 }

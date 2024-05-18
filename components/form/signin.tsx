@@ -14,7 +14,7 @@ const SignIn = () => {
 
     const [showPassword, setShowPassword] = useState(false);
     const [incorrect, setIncorrect] = useState(false);
-    const { username, saveUsername } = useAuthentication();
+    const { saveUsername } = useAuthentication();
     const { register, handleSubmit, formState: { errors } } = useForm<baseUser>();
     const onSubmit: SubmitHandler<baseUser> = (data) => {
         const userList = localStorage.getItem('userList');
@@ -24,11 +24,6 @@ const SignIn = () => {
             if (userExist) {
                 const user = userData.find((user) => user.username === data.username || user.email === data.username);
                 if (user && user.password === hashedPasswords(data.password)) {
-                    const accout = {
-                        email: user.email,
-                        yourName: user.yourName,
-                        username: user.username,
-                    };
                     saveUsername(user);
                     setIncorrect(false);
                     router.push('/');
