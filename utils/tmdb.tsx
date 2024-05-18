@@ -34,14 +34,14 @@ export const useMovieStore = create<MovieStore>((set) => ({
     },
 
     movies: [],
-    fetchMovies: async () => {
-        const moviesData = await fetchData(API.MOVIE);
+    fetchMovies: async (page: number) => {
+        const moviesData = await fetchData(API.MOVIE(page));
         set({ movies: moviesData["results"] });
     },
 
     tv: [],
-    fetchTV: async () => {
-        const tvData = await fetchData(API.TV);
+    fetchTV: async (page: number) => {
+        const tvData = await fetchData(API.TV(page));
         set({ tv: tvData["results"] });
     },
 

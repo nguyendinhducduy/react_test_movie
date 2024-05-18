@@ -5,10 +5,10 @@ export interface MovieStore {
     fetchAll: (current: string) => Promise<void>;
 
     movies: [];
-    fetchMovies: () => Promise<void>;
+    fetchMovies: (page : number) => Promise<void>;
 
     tv: [];
-    fetchTV: () => Promise<void>;
+    fetchTV: (page : number) => Promise<void>;
 
     movieDetail: MovieDetai | null;
     fetchMovieDetail: (id: number) => Promise<void>;

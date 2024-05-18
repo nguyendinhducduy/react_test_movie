@@ -2,10 +2,10 @@
 export const API = {
     ALL: (currentTab: string) => `trending/${currentTab}/week?language=en-US`,
 
-    TV: 'trending/tv/week?language=en-US&page=2',
+    TV: (page : number) => `trending/tv/week?language=en-US&page=${page || 1}`,
     TV_DETAIL: (id: number) => `tv/${id}?language=en-US`,
 
-    MOVIE: `trending/movie/week?language=en-US`,
+    MOVIE: (page : number) => `trending/movie/week?language=en-US&page=${page || 1}`,
     MOVIE_DETAIL: (id: number) => `movie/${id}?language=en-US`,
 
     SEARCH: (keyword: string) => `search/multi?query=${keyword}&include_adult=false&language=en-US`,
