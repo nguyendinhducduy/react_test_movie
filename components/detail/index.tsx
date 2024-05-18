@@ -8,7 +8,7 @@ import Container from '@/components/container';
 import { useAuthentication } from '@/providers/AuthenticationProvider'
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-
+import Comment from './../comment';
 
 interface Props {
     id: number;
@@ -120,6 +120,7 @@ const Detail: React.FC<Props> = ({ id, movies }) => {
                         </ul>
                     </div>
                 </div>
+                <Comment id={id}></Comment>
             </Container>
         </main>
     );

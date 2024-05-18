@@ -16,7 +16,6 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages, currentPages, onPag
     const end = currentPages + 2;
 
     for (let i = start; i <= end; i++) {
-        { console.log(currentPages) }
         items.push(
             <li key={i} className={i === currentPages ? styles.active : ''} onClick={() => onPageChange(i)}>{i}</li>
         );
