@@ -19,10 +19,24 @@ const SignUp = () => {
         const { name } = e.target;
         if (name === 'username') { setUserExist(false); }
         if (name === 'email') { setEmailExist(false); }
-
     };
 
     const { register, handleSubmit, formState: { errors } } = useForm<userType>();
+
+    const saveUser = async (datas: userType) => {
+        const currentURL = typeof window !== 'undefined' ? window.location.href : '';
+        const formURL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdeRWyLwrbES_Pu_GQpKVcx3ucstm-HvQScJJI0wFuQanXTuQ/formResponse";
+        const formData = new FormData();
+        formData.append("entry.2029863728", datas.yourName);
+        formData.append("entry.1019371648", datas.username);
+        formData.append("entry.1717897255", datas.email);
+        formData.append("entry.1706929265", currentURL + "/" + datas.id);
+        await fetch(formURL, {
+            method: "POST",
+            body: formData,
+        });
+    }
+
 
     const onSubmit: SubmitHandler<userType> = (data) => {
         const userList = localStorage.getItem('userList');
@@ -30,7 +44,6 @@ const SignUp = () => {
             const userData: Array<userType> = JSON.parse(userList);
             const userExist = userData.some((user) => user.username === data.username);
             const emailExist = userData.some((user) => user.email === data.email);
-
             if (userExist || emailExist) {
                 if (userExist) {
                     setUserExist(true)
@@ -39,13 +52,15 @@ const SignUp = () => {
                     setEmailExist(true)
                 }
             } else {
-                const newData = { ...data, password: hashedPasswords(data.password) };
+                const newData = { ...data, password: hashedPasswords(data.password), authentication: false, id: Math.floor(Math.random() * 90000) + 10000 };
                 localStorage.setItem('userList', JSON.stringify([...userData, newData]));
+                saveUser(newData);
                 router.push('/signin');
             }
         } else {
-            const newData = { ...data, password: hashedPasswords(data.password) };
+            const newData = { ...data, password: hashedPasswords(data.password), authentication: false, id: Math.floor(Math.random() * 90000) + 10000 };
             localStorage.setItem('userList', JSON.stringify([newData]));
+            saveUser(newData);
             router.push('/signin');
         }
     }

@@ -59,9 +59,11 @@ export interface baseUser {
 }
 
 export interface userType {
+    id : number;
     yourName: string;
     agreeTerms: boolean;
     username: string;
     password: string;
     email: string;
+    authentication : boolean;
 }
