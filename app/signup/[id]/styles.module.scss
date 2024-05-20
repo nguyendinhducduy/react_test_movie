@@ -1,0 +1,31 @@
+.p404 {
+    text-align: center;
+    margin-top: 40px;
+
+    &__title {
+        margin-top: 40px;
+        font-size: 4.8rem;
+        font-weight: 600;
+    }
+
+    &__txt {
+        max-width: 558px;
+        margin-top: 16px;
+        color: rgba(142, 149, 169, 1);
+        margin: 16px auto 24px;
+    }
+
+    &__button {
+        a {
+            display: block;
+            width: 139px;
+            line-height: 56px;
+            text-align: center;
+            color: rgba(255, 255, 255, 1);
+            font-size: 1.6rem;
+            margin: 0 auto;
+            border-radius: 12px;
+            background: rgba(123, 110, 246, 1);
+        }
+    }
+}
