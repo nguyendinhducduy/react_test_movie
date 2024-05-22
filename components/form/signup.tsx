@@ -14,6 +14,7 @@ const SignUp = () => {
     const [userExist, setUserExist] = useState(false);
     const [emailExist, setEmailExist] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+    const [success, setSuccess] = useState(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name } = e.target;
@@ -55,13 +56,13 @@ const SignUp = () => {
                 const newData = { ...data, password: hashedPasswords(data.password), authentication: false, id: Math.floor(Math.random() * 90000) + 10000 };
                 localStorage.setItem('userList', JSON.stringify([...userData, newData]));
                 saveUser(newData);
-                router.push('/signin');
+                setSuccess(true);
             }
         } else {
             const newData = { ...data, password: hashedPasswords(data.password), authentication: false, id: Math.floor(Math.random() * 90000) + 10000 };
             localStorage.setItem('userList', JSON.stringify([newData]));
             saveUser(newData);
-            router.push('/signin');
+            setSuccess(true);
         }
     }
 
@@ -112,6 +113,17 @@ const SignUp = () => {
                     <button type="submit" className={style.form__submit}>Sign Up</button>
                 </form>
             </div>
+            {success &&
+                <div className={style.form__success}>
+                    <div className={style.form__success__inner}>
+                        <h2 className={style.form__success__title}>Sign Up Success</h2>
+                        <p className={style.form__success__txt}>
+                            A confirmation email has been sent to your email, please click on the attached link to confirm your account
+                        </p>
+                        <div className={style.form__success__button}><Link href='/signin'>Signin</Link></div>
+                    </div>
+                </div>
+            }
         </div>
     )
 }

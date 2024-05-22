@@ -14,6 +14,7 @@ const SignIn = () => {
 
     const [showPassword, setShowPassword] = useState(false);
     const [incorrect, setIncorrect] = useState(false);
+    const [authentication, setAuthentication] = useState(false);
     const { saveUsername } = useAuthentication();
     const { register, handleSubmit, formState: { errors } } = useForm<baseUser>();
     const onSubmit: SubmitHandler<baseUser> = (data) => {
@@ -24,9 +25,13 @@ const SignIn = () => {
             if (userExist) {
                 const user = userData.find((user) => user.username === data.username || user.email === data.username);
                 if (user && user.password === hashedPasswords(data.password)) {
-                    saveUsername(user);
-                    setIncorrect(false);
-                    router.push('/');
+                    if (user.authentication) {
+                        saveUsername(user);
+                        setIncorrect(false);
+                        router.push('/');
+                    } else {
+                        setAuthentication(true);
+                    }
                 } else {
                     setIncorrect(true)
                 }
@@ -62,6 +67,15 @@ const SignIn = () => {
                     <button type="submit" className={style.form__submit} >Sign In</button>
                 </form>
             </div>
+            {authentication &&
+                <div className={style.form__success}>
+                    <div className={style.form__success__inner}>
+                        <h2 className={style.form__success__title}>The account has not been verified</h2>
+                        <p className={style.form__success__txt}>Please check your email and click on the attached link to verify your account</p>
+                        <div className={style.form__success__button} onClick={() => setAuthentication(false)}>close</div>
+                    </div>
+                </div>
+            }
         </div>
     )
 }
