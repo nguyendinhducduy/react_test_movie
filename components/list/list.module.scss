@@ -1,22 +1,30 @@
+@import './../../styles/mixin';
+
 .list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     margin-top: 24px;
 
     &__item {
         position: relative;
-        width: 282px;
+        @include percent(width, 1200, 282);
         padding: 8px;
         border-radius: 16px;
         background: #20283E;
         margin-bottom: 20px;
-        margin-left: 24px;
 
         &:nth-child(4n+1) {
             margin-left: 0;
         }
 
+        @include sp {
+            width: 48%;
+        }
 
+        @include max-w(425px) {
+            width: 100%;
+        }
     }
 
     &__img {
@@ -25,6 +33,14 @@
         overflow: hidden;
         position: relative;
         height: 400px;
+
+        @include max-w(1024px) {
+            height: 300px;
+        }
+
+        @include sp {
+            height: 400px;
+        }
 
         img {
             object-fit: cover;

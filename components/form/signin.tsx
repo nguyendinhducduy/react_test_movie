@@ -72,7 +72,7 @@ const SignIn = () => {
                     <div className={style.form__success__inner}>
                         <h2 className={style.form__success__title}>The account has not been verified</h2>
                         <p className={style.form__success__txt}>Please check your email and click on the attached link to verify your account</p>
-                        <div className={style.form__success__button} onClick={() => setAuthentication(false)}>close</div>
+                        <div className={style.form__success__close} onClick={() => setAuthentication(false)}>close</div>
                     </div>
                 </div>
             }

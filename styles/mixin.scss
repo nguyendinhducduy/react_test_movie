@@ -1,0 +1,124 @@
+$breakpoints: (
+    'smless': (max-width: 640px,
+    ),
+    'smover': (min-width: 641px,
+    ),
+    'mdless': (max-width: 767px,
+    ),
+    'mdover': (min-width: 768px,
+    ),
+    'lgless': (max-width: 1024px,
+    ),
+    'lgover': (min-width: 1025px,
+    ),
+    'xlless': (max-width: 1280px,
+    ),
+    'xlover': (min-width: 1281px,
+    ),
+    'xxlless': (max-width: 1440px,
+    ),
+    'xxlover': (min-width: 1441px,
+    ),
+    'maxless': (max-width: 1920px,
+    ),
+    'maxover': (min-width: 1921px,
+    ),
+    ) !default;
+
+@mixin percent($property, $parent, $child) {
+    #{$property}: calc($child / $parent * 100%
+    );
+}
+
+
+@mixin trbl($number) {
+    top: $number;
+    right: $number;
+    bottom: $number;
+    left: $number;
+}
+
+@mixin mq($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media screen and #{inspect(map-get($breakpoints, $breakpoint))} {
+            @content;
+        }
+    }
+
+    @else {
+        @error "指定されたブレイクポイントはありません -> #{map-keys($breakpoints)}";
+    }
+}
+
+@mixin mincyo() {
+    font-family: "游明朝",
+        YuMincho,
+        "ヒラギノ明朝 ProN W3",
+        "Hiragino Mincho ProN",
+        "HG明朝E",
+        "ＭＳ Ｐ明朝",
+        "ＭＳ 明朝",
+        serif;
+}
+
+@mixin hover {
+    @include mq(mdover) {
+        &:hover {
+            @content;
+        }
+    }
+}
+
+@mixin pc {
+    @include mq(mdover) {
+        @content;
+    }
+}
+
+@mixin pad {
+    @include max-w(1024px) {
+        @content;
+    }
+}
+
+@mixin sp {
+    @include mq(mdless) {
+        @content;
+    }
+}
+
+@mixin min-w($breakpoint) {
+    @media screen and (min-width: #{$breakpoint}) {
+        @content;
+    }
+}
+
+@mixin max-w($breakpoint) {
+    @media screen and (max-width: #{$breakpoint}) {
+        @content;
+    }
+}
+
+@mixin clear {
+    *zoom: 1;
+
+    &:after {
+        display: block;
+        content: "";
+        clear: both;
+    }
+}
+
+@mixin en {
+    .en & {
+        @content;
+    }
+}
+
+@mixin poppins {
+    font-family: "Poppins", sans-serif;
+}
+
+@mixin inter {
+    font-family: "Inter", sans-serif;
+}

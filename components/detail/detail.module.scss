@@ -1,6 +1,8 @@
+@import './../../styles/mixin';
+
 .detail {
     &__mv {
-        width: 1200px;
+        width: 100%;
         height: 480px;
         border-radius: 40px;
         overflow: hidden;
@@ -25,7 +27,8 @@
     }
 
     &__head {
-        width: 1040px;
+        width: 100%;
+        max-width: 1040px;
         margin: 0 auto;
         display: flex;
         flex-wrap: wrap;
@@ -43,6 +46,11 @@
         border-radius: 24px;
         overflow: hidden;
 
+        @include max-w(1130px) {
+            min-width: 100%;
+
+        }
+
         &::before {
             content: '';
             position: absolute;
@@ -53,6 +61,12 @@
             background: rgba(32, 40, 62, 0.8);
             z-index: -1;
             opacity: 0.8;
+
+            @include sp {
+                left: 20px;
+                right: 20px;
+                border-radius: 10px;
+            }
         }
 
     }
@@ -90,18 +104,32 @@
         font-size: 3.2rem;
         margin-top: 10px;
         font-weight: 600;
+
+        @include sp {
+            font-size: 2.4rem;
+        }
     }
 
     &__content {
-        width: 1040px;
+        width: 100%;
+        max-width: 1040px;
         margin: 80px auto 0;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+
+        @include sp {
+            display: block;
+        }
     }
 
     &__img {
-        width: 480px;
+        @include percent(width, 1040, 480);
+
+        @include sp {
+            width: 100%;
+            margin-bottom: 40px;
+        }
 
         img {
             width: 100%;
@@ -110,7 +138,11 @@
     }
 
     &__info {
-        width: 480px;
+        @include percent(width, 1040, 480);
+
+        @include sp {
+            width: 100%;
+        }
     }
 
     &__subtitle {

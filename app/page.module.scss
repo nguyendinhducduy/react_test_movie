@@ -1,3 +1,5 @@
+@import './../styles/mixin';
+
 .tab {
     display: flex;
     flex-wrap: wrap;
@@ -22,6 +24,11 @@
         color: rgba(142, 149, 169, 1);
         background: none;
         cursor: pointer;
+
+        @include sp {
+            font-size: 1.4rem;
+            padding: 0 20px;
+        }
 
         &.current {
             background: rgba(123, 110, 246, 1);

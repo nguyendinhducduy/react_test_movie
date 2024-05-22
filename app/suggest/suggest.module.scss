@@ -1,3 +1,5 @@
+@import './../../styles/mixin';
+
 .none {
     margin-top: 96px;
     text-align: center;
@@ -22,11 +24,19 @@
     flex-wrap: wrap;
     justify-content: flex-start;
 
+    @include sp {
+        margin: 20px 0 40px;
+    }
+
     &__inner {
         border: 1px solid #253148;
         background: url(/search.svg) no-repeat center left 15px;
         border-radius: 10px;
         margin-right: 8px;
+
+        @include sp {
+            flex: 1;
+        }
     }
 
     &__placeholder {
@@ -45,6 +55,10 @@
         color: rgba(118, 126, 148, 1);
         padding: 0 16px 0 56px;
         margin: 0 0 9px;
+
+        @include sp {
+            width: 100%;
+        }
 
         &:only-child {
             height: 62px;
@@ -71,6 +85,10 @@
         background: rgba(123, 110, 246, 1);
         font-size: 1.6rem;
         border-radius: 12px;
+
+        @include sp {
+            width: 80px;
+        }
 
     }
 }

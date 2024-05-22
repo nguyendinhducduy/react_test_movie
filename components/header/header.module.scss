@@ -1,3 +1,5 @@
+@import './../../styles/mixin';
+
 .header {
     &__container {
         height: 80px;
@@ -6,7 +8,11 @@
         justify-content: space-between;
         align-items: center;
         margin: 0 auto;
-        max-width: 1200px;
+        max-width: 1240px;
+
+        @include sp {
+            margin: 0 20px;
+        }
     }
 
     &__menu {
@@ -15,6 +21,23 @@
         justify-content: flex-start;
         margin-right: 32px;
 
+        @include sp {
+            position: fixed;
+            background: #000000;
+            top: 80px;
+            right: -200px;
+            display: block;
+            z-index: 99999;
+            margin: 0;
+            padding: 20px;
+            width: 200px;
+            transition: right 200ms;
+
+            &.active {
+                right: 0;
+            }
+        }
+
         li {
             margin-right: 62px;
 
@@ -22,14 +45,111 @@
                 background: url(/arrow-right.svg) no-repeat center right;
                 padding-right: 24px;
                 margin-right: 0;
+
+                @include sp {
+                    background: none;
+                }
             }
         }
-        button{
+
+        button {
             background: none;
             color: #ffffff;
             font-size: 1.6rem;
             font-family: "Poppins", sans-serif;
-            background: url(/logout.svg) no-repeat center right; padding-right: 30px;
+            background: url(/logout.svg) no-repeat center right;
+            padding-right: 30px;
+        }
+    }
+}
+
+/*------------------------------------------------------------
+icon
+------------------------------------------------------------*/
+
+/*
+------------------------------------------------------------*/
+$bar-width: 30px;
+$bar-height: 2px;
+$bar-spacing:6px;
+$bar-black: #ffffff;
+
+.icon00 {
+    z-index: 999;
+    width: $bar-width;
+    height: $bar-height + $bar-spacing * 2;
+    cursor: pointer;
+    display: none;
+
+    @include sp {
+        display: block;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -13px;
+        left: -10px;
+        right: -10px;
+        height: 60px;
+        z-index: 9;
+
+        @include sp {
+            display: none;
+        }
+    }
+
+    &.active {
+        span {
+            background: rgba(255, 255, 255, 0);
+
+            &::before {
+                bottom: 0;
+                transform: rotate(-45deg);
+                transition: bottom 300ms cubic-bezier(0.23, 1, 0.32, 1),
+                    transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);
+            }
+
+            &::after {
+                top: 0;
+                transform: rotate(45deg);
+                transition: top 300ms cubic-bezier(0.23, 1, 0.32, 1),
+                    transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);
+            }
+        }
+    }
+
+    span {
+        width: $bar-width;
+        height: $bar-height;
+        position: relative;
+        transform: translateY($bar-spacing);
+        background: $bar-black;
+        transition: all 0ms 300ms;
+        display: block;
+
+        &::before {
+            width: $bar-width;
+            height: $bar-height;
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: $bar-spacing;
+            background: $bar-black;
+            transition: bottom 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1),
+                transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        &:after {
+            width: $bar-width;
+            height: $bar-height;
+            content: '';
+            position: absolute;
+            left: 0;
+            top: $bar-spacing;
+            background: $bar-black;
+            transition: top 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1),
+                transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
         }
     }
 }

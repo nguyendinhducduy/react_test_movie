@@ -1,3 +1,5 @@
+@import './../../styles/mixin';
+
 .search {
     margin-top: 24px;
 
@@ -10,6 +12,11 @@
         border: 1px solid #253148;
         color: #ffffff;
         padding: 0 56px;
+
+        @include sp {
+            width: 100%;
+            padding-right: 20px;
+        }
 
         &:focus {
             outline: none;

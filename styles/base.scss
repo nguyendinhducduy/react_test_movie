@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-$breakpoints: (
-    'smless': (max-width: 640px,
+$breakpoints: ('smless': (max-width: 640px,
     ),
     'smover': (min-width: 641px,
     ),
@@ -25,7 +24,7 @@ $breakpoints: (
     ),
     'maxover': (min-width: 1921px,
     ),
-    ) !default;
+) !default;
 
 @mixin mq($breakpoint) {
     @if map-has-key($breakpoints, $breakpoint) {
@@ -150,10 +149,9 @@ a {
 
     @include hover {
         opacity: 0.8;
-        filter: alpha(opacity=80
-        );
-    -ms-filter: "alpha(opacity=80)";
-}
+        filter: alpha(opacity=80);
+        -ms-filter: "alpha(opacity=80)";
+    }
 }
 
 
@@ -189,6 +187,10 @@ body {
     color: #EBEEF5;
     font-weight: 400;
     font-size: 16px;
+
+    @include sp {
+        padding-bottom: 50px;
+    }
 }
 
 @supports (-webkit-touch-callout: none) {
@@ -227,6 +229,10 @@ a[href^="tel:"] {
 .c-title1 {
     font-size: 6.4rem;
     font-weight: 600;
+
+    @include sp {
+        font-size: 4rem;
+    }
 }
 
 main {
@@ -237,6 +243,10 @@ main {
     color: #FFFFFF;
     font-size: 1.6rem;
     line-height: 24px;
+
+    @include sp {
+        font-size: 1.4rem;
+    }
 
     span {
         color: #9c92f8;
